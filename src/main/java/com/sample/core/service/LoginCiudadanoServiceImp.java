@@ -1,8 +1,11 @@
 package com.sample.core.service;
 
+import java.util.List;
+
 import com.sample.core.dao.LoginCiudadanoDao;
 import com.sample.core.dao.LoginCiudadanoDao;
 import com.sample.core.dao.LoginCiudadanoDaoImp;
+import com.sample.core.domain.LoginCiudadano;
 
 public class LoginCiudadanoServiceImp implements LoginCiudadanoService {
 
@@ -11,6 +14,9 @@ public class LoginCiudadanoServiceImp implements LoginCiudadanoService {
 	private LoginCiudadanoDao loginCiudadanoDao = new LoginCiudadanoDaoImp();
 	
 	
+	public List<LoginCiudadano> listarCiudadano() throws Exception {
+		return loginCiudadanoDao.list();
+	}
 
 	@Override
 	public void consultarDni(int DNI) throws Exception {
@@ -25,6 +31,8 @@ public class LoginCiudadanoServiceImp implements LoginCiudadanoService {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 	
 

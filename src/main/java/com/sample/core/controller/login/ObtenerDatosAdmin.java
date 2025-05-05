@@ -43,7 +43,7 @@ public class ObtenerDatosAdmin extends HttpServlet {
             out.println("<div class='card-body'>");
             out.println("<h5 class='card-title'>Ciudadanos</h5>");
             out.println("<p class='card-text'>Ver ciudadanos</p>");
-            out.println("<a href='#' class='btn btn-primary'>Ir</a>");
+            out.println("<a href='" + req.getContextPath() + "/LeerDatosCiudadano' class='btn btn-primary'>Ir</a>");
             out.println("</div></div>");
 
             out.println("<div class='card m-2'>");
