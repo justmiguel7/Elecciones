@@ -25,7 +25,6 @@ public class LoginCiudadanoServiceImp implements LoginCiudadanoService {
 	}
 
 
-
 	@Override
 	public void consultarLoginCiudadano(int DNI) throws Exception {
 		// TODO Auto-generated method stub
