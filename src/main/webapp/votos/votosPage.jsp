@@ -26,7 +26,7 @@
 
 
 <span>
-		<a class="btn btn-primary"  href="<%=request.getContextPath()%>/formulario?form=votosform" > Nuevo </a>
+
 </span>
 
 <%  List<Voto> votos = (List) request.getAttribute("votos"); %>
@@ -48,8 +48,7 @@
       <td><%= votos.get(i).getId_candidato() %></td>
       <td><%= votos.get(i).getFecha_Hora() %></td>
       <td> 
-        <a class="btn btn-primary" href="<%= request.getContextPath() %>/loadVotosForm?id=<%= votos.get(i).getId_voto() %>">editar</a>
-        <button class="btn btn-danger" data-id="<%= votos.get(i).getId_voto() %>" onClick="myFunction(this)">eliminar</button>
+   
       </td>
     </tr>
 <% } %>

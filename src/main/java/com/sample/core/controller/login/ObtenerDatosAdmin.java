@@ -33,15 +33,15 @@ public class ObtenerDatosAdmin extends HttpServlet {
             out.println("<div class='card m-2'>");
             out.println("<img class='card-img-top'  src='https://media.istockphoto.com/id/1371167422/es/vector/concepto-de-contrataci%C3%B3n-de-personal.jpg?s=612x612&w=0&k=20&c=HjNMxrX9fakc9AVi9X3Z6ok-T3tGLaU85YNMhfJxtb8=' alt='Card image cap'>");
             out.println("<div class='card-body'>");
-            out.println("<h5 class='card-title'>Candidatos</h5>");
-            out.println("<p class='card-text'>Agregar y eliminar candidatos</p>");
+            out.println("<h5 class='card-title'> Ver Candidatos</h5>");
+            out.println("<p class='card-text'> andidatos</p>");
             out.println("<a href='" + req.getContextPath() + "/LeerDatosBebidas' class='btn btn-primary'>Ir</a>");
             out.println("</div></div>");
 
             out.println("<div class='card m-2'>");
             out.println("<img class='card-img-top' src='https://conocimiento.blob.core.windows.net/conocimiento/2022/Contables/ContabilidadBancos/CasosPracticos/CP_Usuarios_y_perfiles/drex_usuarios_y_perfiles_custom.png' alt='Card image cap'>");
             out.println("<div class='card-body'>");
-            out.println("<h5 class='card-title'>Ciudadanos</h5>");
+            out.println("<h5 class='card-title'> Ver Ciudadanos</h5>");
             out.println("<p class='card-text'>Ver ciudadanos</p>");
             out.println("<a href='" + req.getContextPath() + "/LeerDatosCiudadano' class='btn btn-primary'>Ir</a>");
             out.println("</div></div>");
@@ -49,8 +49,8 @@ public class ObtenerDatosAdmin extends HttpServlet {
             out.println("<div class='card m-2'>");
             out.println("<img class='card-img-top' src='https://cloudfront-us-east-1.images.arcpublishing.com/infobae/PA5VI6NG75FA3MW5G4GSNWCY6Y.jpg' alt='Card image cap'>");
             out.println("<div class='card-body'>");
-            out.println("<h5 class='card-title'>Editar Padron</h5>");
-            out.println("<p class='card-text'>Agregar, eliminar y editar padrones</p>");
+            out.println("<h5 class='card-title'>Ver Padrones</h5>");
+            out.println("<p class='card-text'> eliminar padrones</p>");
             out.println("<a href='" + req.getContextPath() + "/LeerDatosPadron' class='btn btn-primary'>Ir</a>");
             out.println("</div></div>");
         } 

@@ -25,7 +25,6 @@
 
 
 <span>
-		<a class="btn btn-primary"  href="<%=request.getContextPath()%>/formulario?form=padronform" > Nuevo </a>
 </span>
 
 <%  List<LoginCiudadano> ciudadanos  = (List) request.getAttribute("ciudadanos"); %>
@@ -62,8 +61,7 @@
 	<td><%=ciudadanos.get(i).getTelefono()%></td>
 	
 	<td> 
-		<a class="btn btn-primary"  href="<%=request.getContextPath()%>/loadPadronForm?id_padron=<%=ciudadanos.get(i).getDNI()%>" > editar </a>
-	 	<button class="btn btn-danger"  data-id="<%=ciudadanos.get(i).getDNI()%>"  onClick="myFunction(this)" > eliminar </button>
+
 	 </td>
 <%		
 }

@@ -51,7 +51,7 @@
 	<td><%=padrones.get(i).getDistrito()%></td>
 	<td><%=padrones.get(i).isYa_voto()%></td>
 	<td> 
-		<a class="btn btn-primary"  href="<%=request.getContextPath()%>/loadPadronForm?id_padron=<%=padrones.get(i).getId_padron()%>" > editar </a>
+	
 	 	<button class="btn btn-danger"  data-id="<%=padrones.get(i).getId_padron()%>"  onClick="myFunction(this)" > eliminar </button>
 	 </td>
 <%		
