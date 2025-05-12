@@ -1,58 +1,57 @@
 package com.sample.core.controller.login;
 
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/obtenerDatosAdmin")
 public class ObtenerDatosAdmin extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-	  
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setCharacterEncoding("utf-8");
         HttpSession session = req.getSession(false);
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html");
 
-        if (session != null && session.getAttribute("CURRENT_USER") != null) {
-            resp.setContentType("text/html");
-            PrintWriter out = resp.getWriter();
-            
-            out.println("<div class='card m-2'>");
-            out.println("<img class='card-img-top' src='https://fotos.perfil.com/2019/05/22/trim/987/555/elecciones-urna-voto-g20180522-707903.jpg' alt='Card image cap'>");
-            out.println("<div class='card-body'>");
-            out.println("<h5 class='card-title'>Ver votos</h5>");
-            out.println("<p class='card-text'>Ver los votos</p>");
-            out.println("<a href='" + req.getContextPath() + "/LeerDatosVotos' class='btn btn-primary'>Ir</a>");
-            out.println("</div></div>");
+        if (session == null || session.getAttribute("CURRENT_USER") == null) {
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Usuario no autenticado");
+            return;
+        }
 
-            out.println("<div class='card m-2'>");
-            out.println("<img class='card-img-top'  src='https://media.istockphoto.com/id/1371167422/es/vector/concepto-de-contrataci%C3%B3n-de-personal.jpg?s=612x612&w=0&k=20&c=HjNMxrX9fakc9AVi9X3Z6ok-T3tGLaU85YNMhfJxtb8=' alt='Card image cap'>");
-            out.println("<div class='card-body'>");
-            out.println("<h5 class='card-title'> Ver Candidatos</h5>");
-            out.println("<p class='card-text'> andidatos</p>");
-            out.println("<a href='" + req.getContextPath() + "/LeerDatosBebidas' class='btn btn-primary'>Ir</a>");
-            out.println("</div></div>");
+        PrintWriter out = resp.getWriter();
 
-            out.println("<div class='card m-2'>");
-            out.println("<img class='card-img-top' src='https://conocimiento.blob.core.windows.net/conocimiento/2022/Contables/ContabilidadBancos/CasosPracticos/CP_Usuarios_y_perfiles/drex_usuarios_y_perfiles_custom.png' alt='Card image cap'>");
-            out.println("<div class='card-body'>");
-            out.println("<h5 class='card-title'> Ver Ciudadanos</h5>");
-            out.println("<p class='card-text'>Ver ciudadanos</p>");
-            out.println("<a href='" + req.getContextPath() + "/LeerDatosCiudadano' class='btn btn-primary'>Ir</a>");
-            out.println("</div></div>");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Gobierno", "root", "");
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT titulo, descripcion, imagen_url, enlace_url FROM opciones_admin")) {
 
-            out.println("<div class='card m-2'>");
-            out.println("<img class='card-img-top' src='https://cloudfront-us-east-1.images.arcpublishing.com/infobae/PA5VI6NG75FA3MW5G4GSNWCY6Y.jpg' alt='Card image cap'>");
-            out.println("<div class='card-body'>");
-            out.println("<h5 class='card-title'>Ver Padrones</h5>");
-            out.println("<p class='card-text'> eliminar padrones</p>");
-            out.println("<a href='" + req.getContextPath() + "/LeerDatosPadron' class='btn btn-primary'>Ir</a>");
-            out.println("</div></div>");
-        } 
+            while (rs.next()) {
+                String titulo = rs.getString("titulo");
+                String descripcion = rs.getString("descripcion");
+                String imagen = rs.getString("imagen_url");
+                String enlace = req.getContextPath() + rs.getString("enlace_url");
+
+                out.println("<div class='card m-2'>");
+                out.println("<img class='card-img-top' src='" + imagen + "' alt='Card image cap'>");
+                out.println("<div class='card-body'>");
+                out.println("<h5 class='card-title'>" + titulo + "</h5>");
+                out.println("<p class='card-text'>" + descripcion + "</p>");
+                out.println("<a href='" + enlace + "' class='btn btn-primary'>Ir</a>");
+                out.println("</div></div>");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            out.println("<p>Error al cargar los datos.</p>");
+        }
     }
 }

@@ -20,3 +20,29 @@ function cargarDatosAdmin() {
 $(document).ready(function() {
     cargarDatosAdmin();
 });
+
+
+
+function verificarSesionYActualizarBoton() {
+    $.ajax({
+        url: contextPath + "/obtenerDatosAdmin",
+        method: "GET",
+        success: function(response) {
+            // Si entra acá, es porque hay sesión activa
+            $("#botonSesion").attr("href", contextPath + "/logout");
+            $("#botonSesion").text("Cerrar Sesión");
+        },
+        error: function(xhr) {
+            if (xhr.status === 401) {
+                // No hay sesión activa
+                $("#botonSesion").attr("href", contextPath + "/formulario?form=login");
+                $("#botonSesion").text("Iniciar Sesión");
+            }
+        }
+    });
+}
+
+$(document).ready(function() {
+    cargarDatosAdmin();
+    verificarSesionYActualizarBoton(); // Esta línea es nueva
+});
