@@ -16,7 +16,8 @@ public interface PadronDao {
 
     void update(int id_padron, int DNI, String distrito, boolean ya_voto) throws Exception;
 
-	
-	
+    public void marcarComoYaVoto(int dni) throws Exception;
+
+    boolean verificarSiYaVoto(int dni) throws Exception; 
 
 }

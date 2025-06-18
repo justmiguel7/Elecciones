@@ -35,16 +35,39 @@ public class IngresarCiudadano extends HttpServlet{
 			if (dniStr == null || dniStr.trim().isEmpty()) {
 				throw new Exception("DNI vacio");
 			}
+			
+			
 		
-	        DNI = Integer.parseInt(dniStr); // acá parseamos
+	        DNI = Integer.parseInt(dniStr); 
 	        
-	        ciudadanoService.consultarDni(DNI); // validás que exista			
+	        ciudadanoService.consultarDni(DNI);
+	        
+	     // CERRAR SESIÓN DE ADMINISTRADOR SI EXISTE
+	        HttpSession session = req.getSession(false);
+	        if (session != null && session.getAttribute("CURRENT_USER") != null) {
+	            session.invalidate();
+	            Cookie cookie = new Cookie("JSESSIONID", "");
+	            cookie.setMaxAge(0);
+	            cookie.setPath("/");
+	            resp.addCookie(cookie);
+	        }
 
 			HttpSession sessionciudadano = req.getSession(true);
 			sessionciudadano.setAttribute("CURRENT_CIUDADANO", DNI);
 			resp.addCookie(new Cookie("JSESSIONCIUDADANOID", sessionciudadano.getId()));
-
-			setOutResponse("Se logeó correctamente", resp, 200, "ok");
+			
+			
+			  JsonObject obj = new JsonObject();
+			  resp.setContentType("application/json");
+			  resp.setCharacterEncoding("utf-8");
+			  resp.setStatus(200);
+			  obj.addProperty("estatus", "ok");
+			  obj.addProperty("mensaje", "Se logeó correctamente");
+			  obj.addProperty("redirect", req.getContextPath() + "/Padron");
+			    
+			    PrintWriter out = resp.getWriter();
+			    out.print(obj.toString());
+			    out.flush();
 
 		} catch (Exception e) {
 			setOutResponse(e.getMessage(), resp, 400, "error");

@@ -24,6 +24,10 @@ public class PadronDaoImp implements PadronDao{
     private static final String queryDeletePadron = "DELETE FROM padron WHERE id_padron = ?";
     
     private static final String UpdatePadron = "UPDATE padron SET DNI = ?, distrito = ?, ya_voto = ? WHERE id_padron = ?";
+    
+    private static final String queryActualizarYaVoto = "UPDATE padron SET ya_voto = TRUE WHERE DNI = ?";
+
+    private static final String queryYaVoto = "SELECT ya_voto FROM padron WHERE DNI = ?";
 
     public List<Padron> list () throws Exception {
     	ResultSet rs = null;
@@ -99,29 +103,7 @@ public class PadronDaoImp implements PadronDao{
 		st.close();
 	}
 	
-/*
-	public void save(int id_usuario, String distrito, boolean ya_voto) throws Exception {
-	
-		PreparedStatement st = null;
-		ResultSet rs = null;
-		try {
-			
-			st = conexion.dameConnection().prepareStatement(queryAddPadron);		
-			st.setInt(1, id_usuario);
-			st.setString(2, distrito);
-			st.setBoolean(3, ya_voto);
-			int result= st.executeUpdate();
-			if (result==0 ) {
-				throw new Exception("hubo un error en base");
-			}
-		} catch (Exception e) {
-			System.out.println(e.getCause());
-		}finally {	
-			finalizarConexion(st);
-		}
-		
-	}
-	*/
+
 	
 	public void save(int DNI, String distrito, boolean ya_voto) throws Exception {
 	    PreparedStatement st = null;
@@ -190,14 +172,59 @@ public class PadronDaoImp implements PadronDao{
 	    }
 	}
 
+	@Override
+	public void marcarComoYaVoto(int dni) throws Exception {
+	    Connection conn = null;
+	    PreparedStatement st = null;
+	    try {
+	        conn = conexion.dameConnection();
+	        st = conn.prepareStatement(queryActualizarYaVoto);
+	        st.setInt(1, dni);
+	        int filas = st.executeUpdate();
+	        if (filas == 0) {
+	            throw new Exception("No se pudo marcar como ya votó el DNI: " + dni);
+	        }
+	    } finally {
+	        if (st != null) st.close();
+	        if (conn != null) conn.close();
+	    }
+	}
 	
 	
 	
-	
-	
-	
-	
-	
+	public boolean verificarSiYaVoto(int dni) throws Exception {
+	    PreparedStatement st = null;
+	    Connection conn = null;
+	    ResultSet rs = null;
+	    boolean yaVoto = false; // valor por defecto: no votó
+
+
+	    try {
+	        conn = conexion.dameConnection(); // obtener conexión
+	        st = conn.prepareStatement(queryYaVoto); // preparar consulta
+	        st.setInt(1, dni); // setear DNI
+
+	        rs = st.executeQuery(); // ejecutar SELECT
+
+	        if (rs.next()) { // si hay resultado...
+	            yaVoto = rs.getBoolean("ya_voto"); // obtener el valor de la columna ya_voto
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        throw e; // relanzar excepción si se desea manejar arriba
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (st != null) st.close();
+	            if (conn != null) conn.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return yaVoto; // devuelve true si ya votó, false si no
+	}
 	
 	
 	

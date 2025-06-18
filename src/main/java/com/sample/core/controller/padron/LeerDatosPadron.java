@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sample.core.service.PadronService;
 import com.sample.core.service.PadronServiceImp;
@@ -29,7 +30,13 @@ public class LeerDatosPadron extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	
-    
+    	HttpSession session = request.getSession(false);
+
+        if (session == null || session.getAttribute("CURRENT_USER") == null) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "No autorizado");
+            return;
+        }
+        else { 
     	
     	try {
 			request.setAttribute("padrones", padronService.listarPadron());
@@ -39,5 +46,7 @@ public class LeerDatosPadron extends HttpServlet {
 			e.printStackTrace();	
 		}
     }
+
+}
 
 }

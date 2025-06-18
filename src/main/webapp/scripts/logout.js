@@ -1,5 +1,5 @@
 $(function() {
-    $("#btn-logout").click(function (e) {
+    $("#btn-LogOut").click(function (e) {
         e.preventDefault();
         $.ajax({
             url: contextPath + "/LogOut", 
@@ -19,3 +19,4 @@ $(function() {
         });
     });
 });
+ 

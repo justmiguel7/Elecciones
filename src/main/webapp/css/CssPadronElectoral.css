@@ -1,0 +1,684 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+header {
+background: #000000;
+background: linear-gradient(75deg,rgb(24, 24, 24) 0%, rgb(24, 24, 24) 42%, rgb(32, 32, 32) 100%);
+    border-bottom: 2px solid #ccc;
+    color: rgb(255, 255, 255);
+}
+
+.titulo-pagina {
+        padding: 1rem;
+}
+.titulo-pagina h1{
+    font-size: 1.75rem;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: .7rem 0;
+    border-top: 3px solid #292929;
+    border-bottom: 3px solid #292929;
+    background-color: #00000021;
+    margin-top: 10px;
+    
+}
+
+.navbar li {
+    margin: 0 1rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #7a7a7a;
+}
+
+.navbar .derecha {
+    margin-left: auto;
+}
+
+main {
+    padding: 2rem;
+}
+
+.principal {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.boton-votar {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+background: #4dccff;
+background: radial-gradient(circle,rgba(77, 204, 255, 1) 0%, rgb(97, 237, 255) 75%, rgb(167, 231, 236) 100%);    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+     transition: all 0.3s ease;
+         border-style: solid;
+     border-color: #ffffff85;
+}
+
+.boton-votar:hover {
+    
+  }
+
+.contenido {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.columna {
+    flex: 1;
+    min-width: 280px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 1% 1% 0% 0%;
+            padding: 2rem;
+
+}
+
+.repetidor {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.fila {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+}
+
+.seleccion {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* O nowrap si querés en una sola línea */
+    gap: 5%;
+    text-align: center;
+    margin-top: 30px;
+        margin-bottom: 75px;
+
+    
+}
+
+.seleccion_candidatos {
+    display: flex;
+    flex-wrap: wrap;       /* Permite que las cartas pasen a la siguiente fila */
+    justify-content: center; /* Centra las filas */
+    gap: 20px;             /* Espacio entre cartas */
+    margin-top: 30px;
+}
+
+/* Cada carta tendrá un ancho fijo para que entren 3 en fila */
+.seleccion_candidatos .card {
+    flex: 0 1 calc(33.33% - 20px); /* 3 cartas por fila, descontando el gap */
+    box-sizing: border-box;         /* Incluye padding y borde en el ancho */
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    box-shadow: 5px 5px 20px 0 rgba(0, 0, 0, 0.15);
+    border-style: solid;
+    border-color: #c8f2ff47;
+    margin: 0; /* El gap ya controla el espacio */
+}
+
+/* Opcional: ajusta el tamaño de texto para que no se desborde */
+.card-title {
+    font-size: 1.2rem;
+    color: rgb(18, 42, 92);
+}
+
+.card-text {
+    font-size: 1rem;
+    color: rgb(17, 34, 54);
+}
+
+/* Para que las cartas sean responsivas en pantallas pequeñas */
+@media screen and (max-width: 900px) {
+    .seleccion_candidatos .card {
+        flex: 0 1 calc(50% - 20px); /* 2 cartas por fila en pantallas medias */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .seleccion_candidatos .card {
+        flex: 0 1 100%; /* 1 carta por fila en pantallas pequeñas */
+    }
+}
+	
+
+#contenedorAdmin {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* O nowrap si querés en una sola línea */
+    gap: 5%;
+    text-align: center;
+    margin-top: 30px;
+    
+}
+
+
+#seleccion {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* O nowrap si querés en una sola línea */
+    gap: 5%;
+    text-align: center;
+    margin-top: 30px;
+    
+}
+
+.card {
+    width: 300px;
+    background-color: #ffffff;
+    /* border-radius: 10px; */
+    padding: 10px;
+    box-shadow: 5px 5px 20px 0  rgba(0, 0, 0, 0.15);
+    border-style: solid;
+    border-color: #1ac6ff0d;
+;
+    border-radius: 2%;
+}
+
+.card-title{
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0);
+font-size: 20px;
+color: rgb(18, 42, 92);
+}
+
+.card-text{
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0);
+font-size: 15px;
+color: rgb(18, 42, 92);
+}
+
+.card-img-top{
+border-radius: 1px;
+height: 100px;
+border-style: solid;
+border-color: rgb(238, 250, 255);
+
+}
+
+.btn{
+    margin: 10px;
+    background-color: #171d47;
+    color: #ffffff;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 0px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+
+}
+
+.btn:hover {
+    background-color: #35e8f8; /* efecto hover */
+    transform: scale(1.05);
+  }
+  
+
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.nav {
+	    padding: 30px;	
+}
+
+#TextoAdmin{
+
+    margin: 75px;
+       display: flex;
+    justify-content: center;
+
+}
+
+.seleccionar {
+	    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    transition: all 0.3s ease;
+}
+
+.seleccionar:hover{
+	    color: white;
+    transform: scale(1.05);
+	
+}
+
+
+#iniciarsesioncheck {
+	    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    transition: all 0.3s ease;
+}
+
+#iniciarsesioncheck:hover{
+	    color: white;
+    transform: scale(1.05);
+	
+}
+
+.faq-container {
+  max-width: 900px;
+  margin: auto;
+  margin-top: 2rem;
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+.faq-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  cursor: pointer;
+      user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+}
+.faq-question {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.4s ease;
+  padding: 0 10px;
+  opacity: 0;
+}
+.faq-answer.open {
+  max-height: 500px;
+  padding: 10px;
+  opacity: 1;
+}
+.arrow {
+  transition: transform 0.4s ease;
+}
+.arrow.open {
+  transform: rotate(180deg);
+}
+	
+.imagenfondo {
+    position: relative;
+    background-color: black;
+    padding: 50px 0;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.55);
+    
+}
+
+.imagenfondo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url("https://transparenciaelectoral.org/blog/wp-content/uploads/2025/05/1080.jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    filter: blur(5px); /* Desenfoque inicial */
+    z-index: 0;
+    transition: filter 0.6s ease, opacity 0.6s ease;
+}
+
+.imagenfondo2:hover::before {
+    filter: blur(2px); /* Se enfoca */
+    opacity: 0.6; /* Opcional: se aclara un poco */
+}
+
+.imagenfondo > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+.imagenfondo2 {
+    position: relative;
+    background-color: black;
+    padding: 50px 0;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.55);
+}
+
+.imagenfondo2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url("https://image.ondacero.es/clipping/cmsimages02/2024/03/25/6518B173-01F6-48B1-A41F-93AB72387D9A/mesa-electoral-comienza-contabilizar-votos-fotografia-archivo_98.jpg?crop=1920,1080,x0,y32&width=1900&height=1069&optimize=high&format=webply");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    filter: blur(5px); /* Desenfoque inicial */
+    z-index: 0;
+    transition: filter 0.6s ease, opacity 0.6s ease;
+}
+
+.imagenfondo2:hover::before {
+    filter: blur(2px); /* Se enfoca */
+    opacity: 0.6; /* Opcional: se aclara un poco */
+}
+
+.imagenfondo2 > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+
+    #graficoCircular {
+        max-width: 400px;
+        max-height: 400px;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    
+    /* --- INICIO DE CÓDIGO AÑADIDO/MODIFICADO PARA EL EFECTO DE LOS CUADROS --- */
+
+/* Ajuste del .radio-label para que sea el contenedor principal del color */
+.radio-label {
+    /* Mantén tus estilos existentes, pero añade o modifica estas propiedades */
+    background-color: #ffffff; /* Fondo blanco inicial del cuadro */
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Transición para un cambio suave */
+    border-radius: 8px; /* Asegura un radio en todo el cuadro */
+    /* Asegúrate de que el padding y el ancho estén bien definidos para tu diseño */
+    padding: 10px;
+    width: 200px;
+}
+
+/* Efecto al pasar el mouse (HOVER) sobre el cuadro completo */
+.radio-label:hover {
+    background-color: #e0f2f7; /* Color de fondo azul claro para TODO el cuadro al pasar el mouse */
+    border-color: #2596be; /* Cambia el color del borde */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Sombra más prominente */
+}
+
+/* Efecto cuando el cuadro está SELECCIONADO (input radio checked) */
+/* Usamos :has() para que el padre <label> cambie de estilo cuando su input interno está checked */
+.radio-label:has(input[type="radio"]:checked) {
+    background-color: #c8e6c9; /* Color de fondo verde claro para TODO el cuadro cuando está seleccionado */
+    border-color: #4CAF50; /* Cambia el borde */
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5); /* Resplandor verde */
+}
+
+/* Ocultar el radio button predeterminado */
+.d-none {
+    display: none !important;
+}
+
+/* Estilos para el custom-radio (si lo estás usando visualmente) */
+.custom-radio {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #999;
+    border-radius: 50%;
+    position: relative;
+    top: 5px;
+    margin-right: 5px;
+    background-color: #fff;
+}
+
+.radio-label input[type="radio"]:checked + .custom-radio {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.custom-radio:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    display: none;
+}
+
+.radio-label input[type="radio"]:checked + .custom-radio:after {
+    display: block;
+}
+
+/* --- FIN DE CÓDIGO AÑADIDO/MODIFICADO PARA EL EFECTO DE LOS CUADROS --- */
+
+.card-title, .card-text{
+	    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+}
+
+.card-body img{
+	    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+}
+
+#btn-votar{
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */	
+}
+
+.ImagenBorderRadius{
+
+border-radius: 2px;
+
+}
+
+.dni-card {
+    width: 400px;
+    height: 220px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 10px;
+    background: linear-gradient(to bottom, #fffdff, #e7f9ff);
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    font-family: 'Arial', sans-serif;
+    margin: 20px auto;
+}
+
+.dni-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+
+.dni-body {
+    display: flex;
+    margin-top: 10px;
+}
+
+.dni-photo img {
+    width: 80px;
+    height: 100px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background-color: #ccc;
+}
+
+.dni-info {
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.dni-info p {
+    margin: 2px 0;
+}
+
+#opacity{
+	
+	opacity: 0.7;
+	
+}
+
+.imagenfondo2 {
+	text-align: center;
+}
+
+.imagenfondo2 h2{
+	color: white;
+	font-size: 55px;
+}
+
+.imagenfondo2 h1{
+	color: white;
+	font-size: 35px;
+		opacity: 0.7;
+}
+
+.text-danger {
+	    color: #9b9a9a;
+    background-color: #00000029;
+    padding: 5px;
+}
+
+
+.card-voto-seguro {
+    background-color: #ffffff;
+    padding: 20px;
+    border-left: 6px solid #007bff;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-voto-seguro:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+.card-voto-seguro .card-header {
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #007bff;
+    border-bottom: 2px solid #e3e3e3;
+    padding-bottom: 5px;
+}
+
+.card-voto-seguro .card-body ul {
+    padding-left: 1.2rem;
+}
+
+.card-voto-seguro .card-body li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.imagenfondo3 {
+    position: relative;
+    background-color: black;
+    padding: 50px 0;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.55);
+    text-align: center;
+}
+
+.imagenfondo3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url("https://adn979.com/download/multimedia.normal.acb197c1aed98c51.323031392d30332d32364e49445f3236343930374f5f315f6e6f726d616c2e6a706567.jpeg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    filter: blur(5px);
+    z-index: 0;
+    transition: filter 0.6s ease, opacity 0.6s ease;
+}
+
+.imagenfondo3:hover::before {
+    filter: blur(2px);
+    opacity: 0.6;
+}
+
+.imagenfondo3 > * {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

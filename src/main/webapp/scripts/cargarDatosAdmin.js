@@ -1,48 +1,56 @@
-var contextPath = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 1));
 
-// Función para cargar los datos del administrador si está autenticado
-function cargarDatosAdmin() {
-    $.ajax({
-        url: contextPath + "/obtenerDatosAdmin", // Ojo: respetar minúsculas como en @WebServlet
-        method: "GET",
-        cache: false, // evita cachear peticiones
-        success: function(response) {
-            console.log(response); // Para debug
-            $('#contenedorAdmin').html(response);
-        },
-        error: function(xhr, status, error) {
-            console.log("Error al cargar los datos o usuario no autenticado");
-            $('#contenedorAdmin').html('<p>No tienes permiso para ver estos datos.</p>');
-        }
-    });
-}
+$(document).ready(function () {
+    const loginLink = document.getElementById("iniciarsesioncheck");
 
-$(document).ready(function() {
-    cargarDatosAdmin();
-});
-
-
-
-function verificarSesionYActualizarBoton() {
-    $.ajax({
-        url: contextPath + "/obtenerDatosAdmin",
-        method: "GET",
-        success: function(response) {
-            // Si entra acá, es porque hay sesión activa
-            $("#botonSesion").attr("href", contextPath + "/logout");
-            $("#botonSesion").text("Cerrar Sesión");
-        },
-        error: function(xhr) {
-            if (xhr.status === 401) {
-                // No hay sesión activa
-                $("#botonSesion").attr("href", contextPath + "/formulario?form=login");
-                $("#botonSesion").text("Iniciar Sesión");
+    fetch(contextPath + "/api/opciones-admin")
+        .then(res => {
+            if (!res.ok) {
+                if (res.status === 401) {
+                    // No hay sesión: mostrar "Iniciar Sesión"
+                    if (loginLink) {
+                        loginLink.textContent = "Iniciar sesión como Administrador";
+                        loginLink.href = contextPath + "/administrador/login.jsp"; // ruta login
+                        loginLink.onclick = null; // quitar cualquier handler anterior
+                    }
+                }
+                throw new Error("No autorizado o error interno");
             }
-        }
-    });
-}
+            return res.json();
+        })
+        .then(opciones => {
+            // Hay sesión: mostrar "Cerrar Sesión" con logout vía AJAX
+            if (loginLink) {
+                loginLink.textContent = "Cerrar Sesión";
+                loginLink.href = "#"; // para que no navegue
+                loginLink.onclick = function(e) {
+                    e.preventDefault(); // evita que recargue la página
+                    fetch(contextPath + "/LogOut")
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log("Logout:", data.mensaje);
+                            // recargar o ir al login
+                            window.location.href = contextPath + "/administrador/login.jsp"; 
+                        })
+                        .catch(err => console.error("Error en logout:", err));
+                };
+            }
 
-$(document).ready(function() {
-    cargarDatosAdmin();
-    verificarSesionYActualizarBoton(); // Esta línea es nueva
+            const contenedor = document.getElementById("contenedorAdmin");
+            contenedor.innerHTML = ""; // limpio
+            opciones.forEach(op => {
+                const card = `
+                    <div class="card m-2" style="width: 18rem;">
+                        <img class="card-img-top" src="${op.imagen_url}" alt="Imagen">
+                        <div class="card-body">
+                            <h5 class="card-title">${op.titulo}</h5>
+                            <p class="card-text">${op.descripcion}</p>
+                            <a href="${contextPath + op.enlace_url}" class="btn btn-primary">Ir</a>
+                        </div>
+                    </div>`;
+                contenedor.innerHTML += card;
+            });
+        })
+        .catch(err => console.warn("Admin no logueado o error:", err));
 });
+
+

@@ -31,7 +31,7 @@ public class LogOut extends HttpServlet {
                 jsession.invalidate();
             }
             
-            Cookie cookie = new Cookie("JSESSIONID", "");
+            Cookie cookie =	 new Cookie("JSESSIONID", "");
             cookie.setMaxAge(0);
             cookie.setPath("/");
             resp.addCookie(cookie);

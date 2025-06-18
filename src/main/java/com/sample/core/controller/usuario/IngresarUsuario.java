@@ -31,10 +31,21 @@ public class IngresarUsuario extends HttpServlet {
 				throw new Exception("Correo vacio");
 			if (contrasena == null || contrasena.length() == 0)
 				throw new Exception("Contraseña vacia");
+			
 
 			correoservice.consultarCorreo(correo);
 			correoservice.consultarCorreoYContrasena(correo, contrasena);
 
+			 // CERRAR SESIÓN DE CIUDADANO SI EXISTE
+	        HttpSession sessionExistente = req.getSession(false);
+	        if (sessionExistente != null && sessionExistente.getAttribute("CURRENT_CIUDADANO") != null) {
+	            sessionExistente.invalidate();
+	            Cookie cookie = new Cookie("JSESSIONCIUDADANOID", "");
+	            cookie.setMaxAge(0);
+	            cookie.setPath("/");
+	            resp.addCookie(cookie);
+	        }
+			
 			HttpSession session = req.getSession(true);
 			session.setAttribute("CURRENT_USER", correo);
 			resp.addCookie(new Cookie("JSESSIONID", session.getId()));

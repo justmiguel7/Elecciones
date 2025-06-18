@@ -1,0 +1,42 @@
+.dni-card {
+    width: 400px;
+    height: 220px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 10px;
+    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    font-family: 'Arial', sans-serif;
+    margin: 20px auto;
+}
+
+.dni-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+
+.dni-body {
+    display: flex;
+    margin-top: 10px;
+}
+
+.dni-photo img {
+    width: 80px;
+    height: 100px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background-color: #ccc;
+}
+
+.dni-info {
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.dni-info p {
+    margin: 2px 0;
+}
