@@ -28,6 +28,8 @@ public class PadronDaoImp implements PadronDao{
     private static final String queryActualizarYaVoto = "UPDATE padron SET ya_voto = TRUE WHERE DNI = ?";
 
     private static final String queryYaVoto = "SELECT ya_voto FROM padron WHERE DNI = ?";
+    
+    private static final String queryTicket = "SELECT id_padron, distrito from padron WHERE DNI = ?";
 
     public List<Padron> list () throws Exception {
     	ResultSet rs = null;
@@ -226,6 +228,43 @@ public class PadronDaoImp implements PadronDao{
 	    return yaVoto; // devuelve true si ya votó, false si no
 	}
 	
+	public Padron buscarPadronPorDni(int dni) throws Exception {
+		PreparedStatement st = null;
+	    Connection conn = null;
+	    ResultSet rs = null;
+		
+	    try {
+	        conn = conexion.dameConnection(); // obtener conexión
+	        st = conn.prepareStatement(queryTicket); // preparar consulta
+	        st.setInt(1, dni); // setear DNI
+
+	        rs = st.executeQuery(); // ejecutar SELECT
+
+	        if (rs.next()) { // si hay resultado..
+	        	return new Padron(rs.getInt("id_padron"), rs.getString("distrito"));
+	        
+
+	        } else {
+	        	throw new ErrorException("No existe padron con ese dni");
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        throw e; // relanzar excepción si se desea manejar arriba
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (st != null) st.close();
+	            if (conn != null) conn.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    
+	}
+
+
+
 	
 	
 	

@@ -12,5 +12,7 @@ public interface LoginCiudadanoService {
 	public void consultarLoginCiudadano(int dni) throws Exception;
 	
 	public void consultarDni(int dni) throws Exception;
+	
+	public LoginCiudadano buscarPorDni(int dni) throws Exception;
 
 }

@@ -21,6 +21,8 @@ public interface PadronService {
     void marcarComoYaVoto(int dni) throws Exception;
     
     boolean verificarSiYaVoto(int dni) throws Exception; 
+    
+    public Padron buscarPadronPorDni (int dni) throws Exception;
 
 
 }

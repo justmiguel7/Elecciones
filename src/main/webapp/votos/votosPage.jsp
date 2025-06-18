@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="<%=request.getContextPath()%>/icon/icon.png">
+
     <title>Resultados de Votación</title>
     
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/Admin.css">
@@ -19,39 +21,7 @@
 
 <div class="container-principal">
 
-    <!-- Tabla de resultados -->
-    <div class="tabla-votos">
-        <h2>Tabla de Votos</h2>
-        <%
-            List<Voto> votos = (List) request.getAttribute("votos");
-        %>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID Voto</th>
-                    <th>DNI</th>
-                    <th>Presidente</th>
-                    <th>Vicepresidente</th>
-                    <th>Gobernador</th>
-                    <th>Mesa</th>
-                    <th>Fecha</th>
-                </tr>
-            </thead>
-            <tbody>
-            <% for (int i = 0; i < votos.size(); i++) { %>
-                <tr>
-                    <td><%= votos.get(i).getId_voto() %></td>
-                    <td><%= votos.get(i).getDNI() %></td>
-                    <td><%= votos.get(i).getId_presidente() %></td>
-                    <td><%= votos.get(i).getId_vicepresidente() %></td>
-                    <td><%= votos.get(i).getId_gobernador() %></td>
-                    <td><%= votos.get(i).getId_mesa() %></td>
-                    <td><%= votos.get(i).getFecha_Hora() %></td>
-                </tr>
-            <% } %>
-            </tbody>
-        </table>
-    </div>
+
 
     <!-- Gráfico -->
     <div class="graficos">
@@ -65,7 +35,6 @@
         <canvas id="graficoCircular"></canvas>
     </div>
 
-</div>
 
 <!-- Script para cargar gráfico y manejar select -->
 <script>
@@ -128,10 +97,49 @@
     cargarGraficoPorRol(); // carga inicial
 </script>
 
+
+    <!-- Tabla de resultados -->
+    <div class="tabla-votos">
+        <h2>Tabla de Votos</h2>
+        <%
+            List<Voto> votos = (List) request.getAttribute("votos");
+        %>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Voto</th>
+                    <th>DNI</th>
+                    <th>Presidente</th>
+                    <th>Vicepresidente</th>
+                    <th>Gobernador</th>
+                    <th>Mesa</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for (int i = 0; i < votos.size(); i++) { %>
+                <tr>
+                    <td><%= votos.get(i).getId_voto() %></td>
+                    <td><%= votos.get(i).getDNI() %></td>
+                    <td><%= votos.get(i).getId_presidente() %></td>
+                    <td><%= votos.get(i).getId_vicepresidente() %></td>
+                    <td><%= votos.get(i).getId_gobernador() %></td>
+                    <td><%= votos.get(i).getId_mesa() %></td>
+                    <td><%= votos.get(i).getFecha_Hora() %></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </div>
+
+
 <div style="text-align: center; margin: 30px 0;">
     <a href="<%= request.getContextPath() %>/" class="btn-volver">
         ⬅ Volver al Inicio
     </a>
+</div>
+
+
 </div>
 
 </body>

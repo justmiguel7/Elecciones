@@ -1,36 +1,99 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
-    color: #333;
+    background: linear-gradient(135deg, #a8dadc 0%, #457b9d 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    background-color: rgba(251, 251, 251, 0.90);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     text-align: center;
-    padding: 50px;
+    max-width: 550px;
+    width: 90%;
+    transform: translateY(0);
+    animation: fadeInScale 0.8s ease-out forwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 h1 {
-    color: #fff;
-    font-size: 2em;
-    margin-bottom: 20px;
+    color: #1d3557;
+    margin-bottom: 25px;
+    font-size: 2.5em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 p {
-    font-size: 1.2em;
-    color: #f0f0f0;
+    color: #457b9d;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Button Organization Specifics */
+.button-table {
+    width: 100%;
+    /* No margin-top here, let individual cell padding handle spacing */
+    border-collapse: collapse;
+    margin: 0 auto; /* Center the table itself if it doesn't take 100% width */
+}
+
+.button-table tr:first-child td {
+    padding-bottom: 20px; /* Add more space specifically below the first button */
+}
+
+.button-table td {
+    padding-top: 0; /* Reset top padding */
+    padding-bottom: 0; /* Reset bottom padding, then add specific padding for space between */
+    text-align: center;
+    vertical-align: middle; /* Ensure content is vertically centered in cell */
 }
 
 button {
-    background-color: #ffffff;
-    color: #4facfe;
+    background: linear-gradient(45deg, #e63946 0%, #f4a261 100%);
+    color: white;
+    padding: 15px 30px;
     border: none;
-    padding: 12px 25px;
-    font-size: 1em;
-    border-radius: 25px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
     transition: all 0.3s ease;
-    margin-top: 30px;
+    width: 85%;
+    max-width: 350px; /* Keep max width to prevent overly wide buttons */
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
+    display: inline-block; /* Ensure it respects text-align: center on its parent */
 }
 
 button:hover {
-    background-color: #4facfe;
-    color: #fff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(230, 57, 70, 0.6);
+    background: linear-gradient(45deg, #f4a261 0%, #e63946 100%);
+}
+
+#menuPrincipal {
+    background: linear-gradient(45deg, #2a9d8f 0%, #264653 100%);
+    box-shadow: 0 4px 15px rgba(42, 157, 143, 0.4);
+}
+
+#menuPrincipal:hover {
+    background: linear-gradient(45deg, #264653 0%, #2a9d8f 100%);
+    box-shadow: 0 8px 25px rgba(42, 157, 143, 0.6);
 }

@@ -30,7 +30,13 @@ public class LoginCiudadanoServiceImp implements LoginCiudadanoService {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	@Override
+	public LoginCiudadano buscarPorDni(int dni) throws Exception {
+	    return loginCiudadanoDao.buscarPorDni(dni);
+	}
+	
+	
 
 }
    

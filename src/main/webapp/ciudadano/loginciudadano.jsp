@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="<%=request.getContextPath()%>/icon/icon.png">
+
 	<meta charset="UTF-8">
 	<title>Login - Sistema Electoral</title>
 

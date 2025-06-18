@@ -36,7 +36,13 @@ public class MesaServiceImp implements MesaService {
 	 @Override
 	    public List<Mesa> listarMesaPorDni(int dni) throws Exception {
 	        return mesaDao.listByDni(dni);
-	    }	}
+	    }
+
+	@Override
+	public Mesa buscarMesaPorDni(int dni) throws Exception {
+		// TODO Auto-generated method stub
+		return mesaDao.BuscarMesaPorDNI(dni);
+	}	}
 	 
 
    

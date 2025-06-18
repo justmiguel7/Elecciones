@@ -20,4 +20,8 @@ public interface PadronDao {
 
     boolean verificarSiYaVoto(int dni) throws Exception; 
 
+	public Padron buscarPadronPorDni(int dni) throws Exception;
+	
+	
+
 }

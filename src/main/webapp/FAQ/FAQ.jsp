@@ -3,289 +3,355 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+	<link rel="icon" href="<%=request.getContextPath()%>/icon/icon.png">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Preguntas Frecuentes Antes de Votar</title>
   <link rel="stylesheet" href="<%= request.getContextPath()%>/css/CssPadronElectoral.css" />
 
 </head>
-<body>
-
-<header>
+<body class="faq-page">  <header>
         <div class="titulo-pagina">
-            <h1>Menu Principal</h1>
-            <p>Menu principal de la pagina</p>
+            <h1>FAQ</h1>
+            <p id="opacity">Preguntas frecuentes</p>
         </div>
         <nav class="navbar">
             <ul>
                 <li><a href="<%=request.getContextPath()%>/" class="seleccionar">Inicio</a></li>
                 <li><a href="<%=request.getContextPath()%>/FAQ/FAQ.jsp" class="seleccionar">FAQ</a></li>
                 <li><a href="<%=request.getContextPath()%>/seguridad/seguridad.jsp" class="seleccionar">Seguridad y Privacidad</a></li>
-                
+
                 <li class="derecha"><a href="#" class="seleccionar">Iniciar sesión</a></li>
              </ul>
         </nav>
     </header>
 
-<div class="faq-container">
-  <h1>Preguntas Frecuentes Antes de Votar</h1>
+<div class="faq-page-layout"> <%-- INICIO DEL NUEVO CONTENEDOR DE LAYOUT --%>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Quiénes son los candidatos?
-      <span class="arrow">&#9660;</span>
-    </div>
-    <div class="faq-answer">
-      Son las personas que se postulan para cargos públicos en una elección.
-    </div>
-  </div>
+  <div class="faq-container">
+    <h1>Preguntas Frecuentes Antes de Votar</h1>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Qué experiencia política o profesional tienen?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Quiénes son los candidatos?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Son las personas que se postulan para cargos públicos en una elección.
+      </div>
     </div>
-    <div class="faq-answer">
-      Depende de cada candidato. Algunos tienen trayectoria, otros son nuevos.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Qué propuestas concretas tienen?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Qué experiencia política o profesional tienen?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Depende de cada candidato. Algunos tienen trayectoria, otros son nuevos.
+      </div>
     </div>
-    <div class="faq-answer">
-      Debés revisar su plan de gobierno para conocerlas.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Qué postura tienen sobre temas importantes?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Qué propuestas concretas tienen?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Debés revisar su plan de gobierno para conocerlas.
+      </div>
     </div>
-    <div class="faq-answer">
-      Depende del candidato. Podés comparar sus declaraciones y propuestas.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Es confiable?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Qué postura tienen sobre temas importantes?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Depende del candidato. Podés comparar sus declaraciones y propuestas.
+      </div>
     </div>
-    <div class="faq-answer">
-      Revisá su historial, denuncias y declaraciones anteriores.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Pertenece a un partido con el que me identifico?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Es confiable?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Revisá su historial, denuncias y declaraciones anteriores.
+      </div>
     </div>
-    <div class="faq-answer">
-      Esto puede ayudarte a decidir tu voto.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Cumple sus promesas?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Pertenece a un partido con el que me identifico?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Esto puede ayudarte a decidir tu voto.
+      </div>
     </div>
-    <div class="faq-answer">
-      Compará lo que dijo con lo que hizo antes.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Es un verdadero líder?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Cumple sus promesas?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Compará lo que dijo con lo que hizo antes.
+      </div>
     </div>
-    <div class="faq-answer">
-      Fijate si toma decisiones o es un “títere” del partido.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Con qué personas se rodea?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Es un verdadero líder?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Fijate si toma decisiones o es un “títere” del partido.
+      </div>
     </div>
-    <div class="faq-answer">
-      Su equipo puede decir mucho sobre su gestión futura.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Son viables sus propuestas?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Con qué personas se rodea?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Su equipo puede decir mucho sobre su gestión futura.
+      </div>
     </div>
-    <div class="faq-answer">
-      Algunas lo son, otras suenan bien pero no tienen sustento.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Cómo va a financiar lo que propone?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Son viables sus propuestas?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Algunas lo son, otras suenan bien pero no tienen sustento.
+      </div>
     </div>
-    <div class="faq-answer">
-      Es importante que lo explique claramente.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿A quién beneficia más?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Cómo va a financiar lo que propone?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Es importante que lo explique claramente.
+      </div>
     </div>
-    <div class="faq-answer">
-      Revisá si sus políticas ayudan a todos o solo a algunos sectores.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Perjudica a alguien?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿A quién beneficia más?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Revisá si sus políticas ayudan a todos o solo a algunos sectores.
+      </div>
     </div>
-    <div class="faq-answer">
-      Toda decisión política tiene impacto social.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Qué dice sobre el medio ambiente?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Perjudica a alguien?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Toda decisión política tiene impacto social.
+      </div>
     </div>
-    <div class="faq-answer">
-      Es un tema clave que no todos los candidatos priorizan.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Qué propone en derechos humanos y justicia social?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Qué dice sobre el medio ambiente?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Es un tema clave que no todos los candidatos priorizan.
+      </div>
     </div>
-    <div class="faq-answer">
-      Algunos los defienden, otros los minimizan.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Qué pasó en los últimos años?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Qué propone en derechos humanos y justicia social?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Algunos los defienden, otros los minimizan.
+      </div>
     </div>
-    <div class="faq-answer">
-      Hubo crisis, inflación, reformas. Eso influye en tu decisión.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Qué quiero mejorar?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Qué pasó en los últimos años?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Hubo crisis, inflación, reformas. Eso influye en tu decisión.
+      </div>
     </div>
-    <div class="faq-answer">
-      Identificar tus prioridades te ayuda a decidir.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Cómo está la economía?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Qué quiero mejorar?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Identificar tus prioridades te ayuda a decidir.
+      </div>
     </div>
-    <div class="faq-answer">
-      La inflación, pobreza y desempleo son factores clave.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿El partido ya gobernó?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Cómo está la economía?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        La inflación, pobreza y desempleo son factores clave.
+      </div>
     </div>
-    <div class="faq-answer">
-      Podés evaluar su gestión pasada.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Me beneficiaría su gobierno?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿El partido ya gobernó?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Podés evaluar su gestión pasada.
+      </div>
     </div>
-    <div class="faq-answer">
-      Es válido pensar cómo impactará su gestión en tu vida.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Qué pasa si no voto?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Me beneficiaría su gobierno?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Es válido pensar cómo impactará su gestión en tu vida.
+      </div>
     </div>
-    <div class="faq-answer">
-      Es obligatorio. Podés ser sancionado y, además, perdés voz.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Mi voto hace la diferencia?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Qué pasa si no voto?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Es obligatorio. Podés ser sancionado y, además, perdés voz.
+      </div>
     </div>
-    <div class="faq-answer">
-      Sí. Especialmente en elecciones reñidas.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Qué dicen los medios?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Mi voto hace la diferencia?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Sí. Especialmente en elecciones reñidas.
+      </div>
     </div>
-    <div class="faq-answer">
-      Escuchalos, pero también analizá por tu cuenta.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Voto por convicción o por miedo?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Qué dicen los medios?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Escuchalos, pero también analizá por tu cuenta.
+      </div>
     </div>
-    <div class="faq-answer">
-      Lo ideal es votar por tus ideas, no por temor.
-    </div>
-  </div>
 
-  <div class="faq-item">
-    <div class="faq-question">
-      ¿Estoy bien informado?
-      <span class="arrow">&#9660;</span>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Voto por convicción o por miedo?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Lo ideal es votar por tus ideas, no por temor.
+      </div>
     </div>
-    <div class="faq-answer">
-      Evitá fake news. Informate por medios confiables.
-    </div>
-  </div>
 
-</div>
+    <div class="faq-item">
+      <div class="faq-question">
+        ¿Estoy bien informado?
+        <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer">
+        Evitá fake news. Informate por medios confiables.
+      </div>
+    </div>
+  </div> <%-- FIN DE faq-container --%>
+
+  <div class="jsp-section">
+    <h2>Información Adicional para el Votante</h2>
+    <div class="info-table-container">
+      <table class="info-table">
+        <thead>
+          <tr>
+            <th>Aspecto</th>
+            <th>Consideración Importante</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Fecha de Elecciones</strong></td>
+            <td>Verifica la fecha exacta de las próximas elecciones en tu distrito.</td>
+          </tr>
+          <tr>
+            <td><strong>Lugar de Votación</strong></td>
+            <td>Consulta el padrón electoral para saber dónde te toca votar. ¡Puede cambiar!</td>
+          </tr>
+          <tr>
+            <td><strong>Documentación Requerida</strong></td>
+            <td>Asegúrate de llevar tu DNI (u otra identificación válida) el día de la votación.</td>
+          </tr>
+          <tr>
+            <td><strong>Horario de Votación</strong></td>
+            <td>Conoce los horarios de apertura y cierre de las mesas para organizar tu día.</td>
+          </tr>
+          <tr>
+            <td><strong>Voto en Blanco / Nulo</strong></td>
+            <td>Entiende la diferencia y el impacto de cada uno en el resultado final.</td>
+          </tr>
+          <tr>
+            <td><strong>Elecciones Primarias (PASO)</strong></td>
+            <td>Si aplica en tu país, comprende su objetivo y cómo influyen en las elecciones generales.</td>
+          </tr>
+          <tr>
+            <td><strong>Cómo Consultar el Padrón</strong></td>
+            <td>Generalmente se hace online con tu número de documento. Verifica las fuentes oficiales.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Preguntas Frecuentes sobre el Proceso Electoral</h3>
+    <div class="info-box-grid">
+      <div class="info-box">
+        <h4>¿Cómo sé si estoy habilitado para votar?</h4>
+        <p>Debes consultar el padrón electoral oficial con tu número de documento. Si apareces, estás habilitado.</p>
+      </div>
+      <div class="info-box">
+        <h4>¿Qué hago si mi DNI está desactualizado?</h4>
+        <p>Generalmente, se exige la última versión del DNI. Verifica las normativas de tu país o la autoridad electoral.</p>
+      </div>
+      <div class="info-box">
+        <h4>¿Puedo votar si estoy de viaje?</h4>
+        <p>Depende de la legislación electoral de tu país. Algunos permiten el voto en el extranjero con registro previo.</p>
+      </div>
+      <div class="info-box">
+        <h4>¿Cómo puedo ser autoridad de mesa?</h4>
+        <p>Las autoridades son designadas por la justicia electoral, pero puedes postularte o ser voluntario en algunos casos.</p>
+      </div>
+    </div>
+  </div> <%-- FIN DE jsp-section --%>
+
+</div> <%-- FIN DEL NUEVO CONTENEDOR DE LAYOUT (faq-page-layout) --%>
 
 <footer>
-        
-            
-            
+
+
     <h3>¿Cómo funciona esta plataforma?</h3>
     <p>Esta aplicación permite simular un proceso de elecciones en línea. Cada ciudadano registrado en el padrón puede emitir un voto válido en su distrito.</p>
     <p>Los administradores pueden gestionar candidatos, consultar resultados y monitorear la participación.</p>

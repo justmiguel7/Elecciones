@@ -1,5 +1,6 @@
 package com.sample.core.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import java.sql.ResultSet;
@@ -9,6 +10,7 @@ import java.util.List;
 
 import com.sample.core.dao.config.Conexion;
 import com.sample.core.domain.Mesa;
+import com.sample.core.domain.Padron;
 import com.sample.core.exceptions.ErrorException;
 
 public class MesaDaoImp implements MesaDao {
@@ -21,6 +23,12 @@ public class MesaDaoImp implements MesaDao {
 	        "FROM mesa m " +
 	        "JOIN padron p ON p.distrito = m.distrito " +
 	        "WHERE p.DNI = ?";
+	    
+	    private static final String queryTicket = 
+		        "SELECT DISTINCT m.mesa, m.orden " +
+		        "FROM mesa m " +
+		        "JOIN padron p ON p.distrito = m.distrito " +
+		        "WHERE p.DNI = ?";
 
 	    @Override
 	    public List<Mesa> listByDni(int dni) throws Exception {
@@ -64,4 +72,38 @@ public class MesaDaoImp implements MesaDao {
 			// TODO Auto-generated method stub
 			return null;
 		}
+		
+		
+		@Override
+		public Mesa BuscarMesaPorDNI(int dni) throws Exception {
+		    PreparedStatement st = null;
+		    Connection conn = null;
+		    ResultSet rs = null;
+
+		    try {
+		        conn = conexion.dameConnection();
+		        st = conn.prepareStatement(queryTicket);
+		        st.setInt(1, dni);
+
+		        rs = st.executeQuery();
+
+		        if (rs.next()) {
+		            Mesa mesa = new Mesa();
+		            mesa.setMesa(rs.getInt("mesa")); // Número de mesa
+		            mesa.setOrden(rs.getInt("orden")); // Orden correcto
+		            return mesa;
+		        } else {
+		            throw new ErrorException("No existe padron con ese dni");
+		        }
+
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		        throw e;
+		    } finally {
+		        if (rs != null) rs.close();
+		        if (st != null) st.close();
+		        if (conn != null) conn.close();
+		    }
+		}
+
 		}

@@ -32,8 +32,16 @@ public class Mesa {
 	
 
 	}
+	
+	public Mesa() { }
 
 	
+	public Mesa(int mesa, int orden) {
+		this.id_mesa = id_mesa;
+		this.orden = orden;
+		
+	}
+
 	public int getMesa() {
 		return mesa;
 	}

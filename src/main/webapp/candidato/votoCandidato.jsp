@@ -6,6 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="<%=request.getContextPath()%>/icon/icon.png">
+
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/CssPadronElectoral.css">
 <meta charset="UTF-8">
 
@@ -27,16 +29,15 @@
  
     <header>
         <div class="titulo-pagina">
-            <h1>Menu Principal</h1>
-            <p>Menu principal de la pagina</p>
-        </div>
-        <nav class="navbar">
+            <h1>Candidatos disponibles</h1>
+            <p id="opacity">Seleccione los candidatos que desea votar</p>
+        </div>        <nav class="navbar">
             <ul>
-                <li><a href="<%=request.getContextPath()%>/menuElecciones.jsp" class="seleccionar">Inicio</a></li>
+                <li><a href="<%=request.getContextPath()%>/" class="seleccionar">Inicio</a></li>
                 <li><a href="<%=request.getContextPath()%>/FAQ/FAQ.jsp" class="seleccionar">FAQ</a></li>
-                <li><a href="#" class="seleccionar">Candidatos</a></li>
-                              <li class="derecha"><a href="#" id="cerrarSesionCiudadano" class="seleccionar">Cerrar sesión</a></li>
-
+                <li><a href="<%=request.getContextPath()%>/seguridad/seguridad.jsp" class="seleccionar">Seguridad y Privacidad</a></li>
+                
+                           <li class="derecha"><a href="#" id="cerrarSesionCiudadano" class="seleccionar">Cerrar sesión</a></li>
              </ul>
         </nav>
     </header>

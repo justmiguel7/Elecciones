@@ -5,7 +5,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>css/CssPadronElectoral.css">
-	<link rel="icon" href="<%=request.getContextPath()%>/icon/icon.">
+	<link rel="icon" href="<%=request.getContextPath()%>/icon/icon.png">
 	<meta charset="UTF-8">
 	<title>Elecciones</title>
 

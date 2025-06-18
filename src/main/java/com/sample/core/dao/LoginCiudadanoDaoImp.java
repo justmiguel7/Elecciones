@@ -1,7 +1,9 @@
 package com.sample.core.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,9 @@ public class LoginCiudadanoDaoImp implements LoginCiudadanoDao {
 	private static final String queryList = "SELECT DNI FROM Ciudadano";
 
 	private static final String queryConsultarList = "SELECT DNI, nombre, apellido, sexo, nacionalidad, direccion, cp, localidad, telefono FROM ciudadano";
+	
+	private static final String queryBuscarPorDni = "SELECT DNI, nombre, apellido, sexo, nacionalidad, direccion, cp, localidad, telefono FROM ciudadano WHERE DNI = ?";
+
 
 	public List<LoginCiudadano> list() throws Exception {
 		ResultSet rs = null;
@@ -92,6 +97,58 @@ public class LoginCiudadanoDaoImp implements LoginCiudadanoDao {
 
 	public void agregarReintento(int DNI) throws Exception {
 
+	}
+	
+	
+	
+	
+	
+	@Override
+	public LoginCiudadano buscarPorDni(int dni) throws ErrorException {
+	    String sql =
+	        "SELECT "
+	      + "  DNI          AS dni, "
+	      + "  nombre       AS nombre, "
+	      + "  apellido     AS apellido, "
+	      + "  sexo         AS sexo, "
+	      + "  nacionalidad AS nacionalidad, "
+	      + "  direccion    AS direccion, "
+	      + "  cp           AS cp, "
+	      + "  localidad    AS localidad, "
+	      + "  telefono     AS telefono "
+	      + "FROM ciudadano "
+	      + "WHERE DNI = ?";
+
+	    // Logueo para depuración
+	    System.out.println("→ Ejecutando SQL buscarPorDni: " + sql);
+	    System.out.println("   Parámetro dni = " + dni);
+
+	    try (
+	        Connection conn = conexion.dameConnection();
+	        PreparedStatement st = conn.prepareStatement(sql)
+	    ) {
+	        st.setInt(1, dni);
+	        try (ResultSet rs = st.executeQuery()) {
+	            // Sólo un único rs.next() dentro del scope abierto
+	            if (rs.next()) {
+	                return new LoginCiudadano(
+	                    rs.getInt("dni"),
+	                    rs.getString("nombre"),
+	                    rs.getString("apellido"),
+	                    rs.getString("sexo"),
+	                    rs.getString("nacionalidad"),
+	                    rs.getString("direccion"),
+	                    rs.getInt("cp"),
+	                    rs.getString("localidad"),
+	                    rs.getInt("telefono")
+	                );
+	            } else {
+	                throw new ErrorException("No existe ciudadano con DNI: " + dni);
+	            }
+	        }
+	    } catch (SQLException e) {
+	        throw new ErrorException("Error al buscar ciudadano por DNI en la BD", e);
+	    }
 	}
 
 }

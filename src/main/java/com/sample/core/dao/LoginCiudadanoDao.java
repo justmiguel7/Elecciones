@@ -11,5 +11,7 @@ public interface LoginCiudadanoDao {
 	public void agregarReintento(int DNI) throws Exception;
 
 	public List<LoginCiudadano> list() throws Exception;
+	
+	public LoginCiudadano buscarPorDni(int dni) throws Exception; 
 
 }

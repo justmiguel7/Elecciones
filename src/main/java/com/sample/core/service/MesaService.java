@@ -3,6 +3,7 @@ package com.sample.core.service;
 import java.util.List;
 
 import com.sample.core.domain.Mesa;
+import com.sample.core.domain.Padron;
 import com.sample.core.domain.Mesa;
 
 
@@ -18,6 +19,7 @@ public interface MesaService {
 	
 	    List<Mesa> listarMesaPorDni(int dni) throws Exception;
 	
+	    public Mesa buscarMesaPorDni (int dni) throws Exception;
 
 
 

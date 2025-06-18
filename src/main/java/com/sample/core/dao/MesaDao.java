@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import com.sample.core.domain.Mesa;
+import com.sample.core.domain.Padron;
 
 public interface MesaDao {
 
@@ -14,6 +15,9 @@ public interface MesaDao {
 	
 
 	    List<Mesa> listByDni(int dni) throws Exception;
+	    
+		public Mesa BuscarMesaPorDNI(int dni) throws Exception;
+
 	
 
 }

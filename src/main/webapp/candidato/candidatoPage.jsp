@@ -1,16 +1,18 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.Import"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>    
-<%@page import="java.util.*"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.List" %>
 <%@page import="com.sample.core.domain.Candidato"%>
     
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="<%=request.getContextPath()%>/icon/icon.png">
+
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/Admin.css">
 	<script src="<%=request.getContextPath()%>/scripts/jquery/jquery.min.js"></script>
 
 	<script type="text/javascript">
@@ -56,6 +58,11 @@
  </tbody>
 
 </table>
+<div style="text-align: center; margin: 30px 0;">
+    <a href="<%= request.getContextPath() %>/" class="btn-volver">
+        ⬅ Volver al Inicio
+    </a>
+</div>
 
 </div>
 </body>

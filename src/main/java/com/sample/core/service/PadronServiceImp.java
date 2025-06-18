@@ -40,4 +40,11 @@ public class PadronServiceImp implements PadronService {
 	    public boolean verificarSiYaVoto(int dni) throws Exception {
 	        return padronDao.verificarSiYaVoto(dni);
 	    }
+
+	@Override
+	public Padron buscarPadronPorDni(int dni) throws Exception {
+		// TODO Auto-generated method stub
+	    return padronDao.buscarPadronPorDni(dni); // o como lo tengas implementado
+
+	}
 }

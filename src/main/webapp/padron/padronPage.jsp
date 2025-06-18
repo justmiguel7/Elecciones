@@ -1,14 +1,16 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.Import"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>    
-<%@page import="java.util.*"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.List" %>
 <%@page import="com.sample.core.domain.Padron"%>
     
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="<%=request.getContextPath()%>/icon/icon.png">
+
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+ <link rel="stylesheet" href="<%=request.getContextPath()%>/css/Admin.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<script src="<%=request.getContextPath()%>/scripts/jquery/jquery.min.js"></script>
@@ -25,9 +27,7 @@
 <div class="container mt-4">
 
 
-<span>
-		<a class="btn btn-primary"  href="<%=request.getContextPath()%>/formulario?form=padronform" > Nuevo </a>
-</span>
+
 
 <%  List<Padron> padrones  = (List) request.getAttribute("padrones"); %>
 
@@ -50,16 +50,19 @@
 	<td><%=padrones.get(i).getDNI() %></td>
 	<td><%=padrones.get(i).getDistrito()%></td>
 	<td><%=padrones.get(i).isYa_voto()%></td>
-	<td> 
-	
-	 	<button class="btn btn-danger"  data-id="<%=padrones.get(i).getId_padron()%>"  onClick="myFunction(this)" > eliminar </button>
-	 </td>
-<%		
+	<%		
 }
 %>
  </tbody>
+ 
 
 </table>
+
+<div style="text-align: center; margin: 30px 0;">
+    <a href="<%= request.getContextPath() %>/" class="btn-volver">
+        ⬅ Volver al Inicio
+    </a>
+</div>
 
 </div>
 </body>

@@ -2,10 +2,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.*"%>
 <%@page import="com.sample.core.domain.Mesa"%>
+<%@page import="com.sample.core.domain.LoginCiudadano"%>
 
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="<%=request.getContextPath()%>/icon/icon.png">
+
     <meta charset="UTF-8">
     <title>Listado de Mesas</title>
     
@@ -33,10 +36,10 @@
         </div>
         <nav class="navbar">
             <ul>
-                <li><a href="<%=request.getContextPath()%>/" class="seleccionar">Inicio</a></li>
-                <li><a href="<%=request.getContextPath()%>/FAQ/FAQ.jsp" class="seleccionar">FAQ</a></li>
+              <li><a href="<%= request.getContextPath() %>/" class="seleccionar">Inicio</a></li>
+            <li><a href="<%= request.getContextPath() %>/FAQ/FAQ.jsp" class="seleccionar">FAQ</a></li>
                 <li><a href="<%=request.getContextPath()%>/seguridad/seguridad.jsp" class="seleccionar">Seguridad y Privacidad</a></li>
-                                <li class="derecha"><a href="#" id="cerrarSesionCiudadano" class="seleccionar">Cerrar sesión</a></li>
+                           <li class="derecha"><a href="#" id="cerrarSesionCiudadano" class="seleccionar">Cerrar sesión</a></li>
             </ul>
         </nav>
     </header>
@@ -50,6 +53,8 @@
             </div>
         </section>
 
+<div class="container-dni">
+
  <!-- DNI Card -->
         <div class="dni-card">
             <div class="dni-header">
@@ -58,23 +63,25 @@
             </div>
             <div class="dni-body">
                 <div class="dni-photo">
-                    <img src="<%=request.getContextPath()%>/images/foto-perfil.png" alt="Foto Ciudadano">
+                    <img src="<%=request.getContextPath()%>/images/profile-picture.png" alt="Foto Ciudadano">
                 </div>
-                <div class="dni-info">
-                    <p><strong>DNI:</strong> 12345678</p>
-                    <p><strong>Apellido:</strong> Pérez</p>
-                    <p><strong>Nombre:</strong> Juan</p>
-                    <p><strong>Sexo:</strong> M</p>
-                    <p><strong>Nacionalidad:</strong> Argentina</p>
-                    <p><strong>Dirección:</strong> Av. Siempre Viva 742</p>
-                    <p><strong>CP:</strong> 1000</p>
-                    <p><strong>Localidad:</strong> Buenos Aires</p>
-                    <p><strong>Teléfono:</strong> 1123456789</p>
-                </div>
+                
+                
+<div id="infoCiudadano">
+    Cargando datos...
+</div>
+
+<!-- Importamos el JS externo -->
+<script src="<%=request.getContextPath()%>/scripts/DNIVirtual.js"></script>
+
+                
+                
+                
+
             </div>
         </div>
     </div>
-
+</div>
         <section class="repetidor" style="background-color: #f8f9fa; padding: 40px;">
             <div class="fila" style="display: flex; gap: 20px; margin-bottom: 30px;">
                 <!-- Últimas novedades -->

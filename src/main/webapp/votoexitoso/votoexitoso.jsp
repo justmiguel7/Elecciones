@@ -7,17 +7,21 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/votoConfirmado.css">
 </head>
 <body>
-    <h1>¡Tu voto ha sido registrado correctamente!</h1>
-    <p>Gracias por participar de las elecciones.</p>
+    <div class="container">
+        <h1>¡Tu voto ha sido registrado correctamente!</h1>
+        <p>Gracias por participar de las elecciones.</p>
 
-    <button id="descargarTicket">Descargar Ticket de Voto</button>
+        <table class="button-table">
+            <tr>
+                <td><button id="descargarTicket">Descargar Ticket de Voto</button></td>
+            </tr>
+            <tr>
+                <td><button id="menuPrincipal">Regresar al menú principal</button></td>
+            </tr>
+        </table>
+    </div>
 
-
-
-    <br>
-        <button id="menuPrincipal">Regresar al menu principal</button>
-
-     <script>
+    <script>
         document.getElementById("descargarTicket").addEventListener("click", function() {
             // Abrir el PDF en nueva pestaña
             window.open('<%= request.getContextPath() %>/GenerarTicketVoto', '_blank');
@@ -25,7 +29,7 @@
 
         document.getElementById("menuPrincipal").addEventListener("click", function() {
             // Abrir el PDF en nueva pestaña
-            window.open('<%= request.getContextPath() %>/', '_blank');
+            window.open('<%= request.getContextPath() %>/', '_self'); // Changed to _self to stay in the same tab
         });
     </script>
 
