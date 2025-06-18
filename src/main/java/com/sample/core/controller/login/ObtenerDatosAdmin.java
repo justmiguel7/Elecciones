@@ -30,7 +30,7 @@ public class ObtenerDatosAdmin extends HttpServlet {
 
         PrintWriter out = resp.getWriter();
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Gobierno", "root", "");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Gobierno?serverTimezone=UTC", "root", "");
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT titulo, descripcion, imagen_url, enlace_url FROM opciones_admin")) {
 
