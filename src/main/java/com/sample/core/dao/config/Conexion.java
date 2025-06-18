@@ -36,14 +36,13 @@ public class Conexion {
 			conn = DriverManager.getConnection(URL+"/"+ DBNAME+TIMEZONE, USUARIO, PASSWORD);
 			if (!conn.isClosed()) {
 				
-				//log.info("conectado a la base de datos");
 			}	
 			return conn;
 		} catch (ClassNotFoundException e) {
-			//log.error("Error de acceso al driver" + e.getMessage());
+
 			e.printStackTrace();
 		} catch (SQLException e) {
-			//log.error("Error de SQL" + e.getMessage());
+	
 		}
 		return null;
 	}
