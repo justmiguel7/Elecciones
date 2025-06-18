@@ -14,5 +14,4 @@ public interface CandidatoDao {
     
     List<Candidato> listarImagenes() throws Exception; 
 
-
 }
